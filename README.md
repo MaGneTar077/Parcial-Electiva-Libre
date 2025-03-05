@@ -18,4 +18,4 @@ Luis Santiago Gonzalezrubio Padilla
 Habib Sebastian Gonzalez Julio
 Daniel Andres Palacio Mercado
 Gustavo Enrique Beltran Pulido
-Juan David martienz Gracia
+Juan David Martinez Gracia
