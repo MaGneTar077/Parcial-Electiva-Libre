@@ -24,7 +24,7 @@ public class TransactionService {
         return savedTransaction;
     }
 
-    public List<Transactions> getTransactionsByAccountId(String accountId){
-        return transactionRepository.findByAccountId(accountId);
+    public List<Transactions> getAllTransactions() {
+        return transactionRepository.findAll();
     }
 }

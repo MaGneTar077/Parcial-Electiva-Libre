@@ -5,6 +5,6 @@ import java.util.List;
 
 
 public interface TransactionRepository {
-    Transactions save (Transactions transactions);
-    List<Transactions> findByAccountId(String accountId);
+    Transactions save(Transactions transaction);
+    List<Transactions> findAll();
 }

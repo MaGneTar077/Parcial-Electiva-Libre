@@ -4,28 +4,21 @@ import java.util.Objects;
 import java.util.Date;
 
 public class Transactions {
-    private final String id;
-    private final String accountId;
-    private final String type;
-    private final double amount;
-    private final Date date;
+    private String id;
+    private String type;
+    private double amount;
+    private Date date;
 
     // Constructor
-    public Transactions(String id, String accountID, String type, double amount, Date date) {
+    public Transactions(String id, String type, double amount, Date date) {
         this.id = id;
-        this.accountId = accountID;
         this.type = type;
         this.amount = amount;
         this.date = date;
-        validate();
     }
 
     public String getId() {
         return id;
-    }
-
-    public String getAccountID() {
-        return accountId;
     }
 
     public String getType() {
@@ -40,24 +33,17 @@ public class Transactions {
         return date;
     }
 
-    private void validate() {
-        if (id == null || id.isBlank()) {
-            throw new IllegalArgumentException("ID cannot be null or blank");
-        }
-        if (accountId == null || accountId.isBlank()) {
-            throw new IllegalArgumentException("Account ID cannot be null or blank");
-        }
-        if (type == null || (!type.equals("Income") && !type.equals("Outcome"))) {
-            throw new IllegalArgumentException("Type must be 'income' or 'outcome'");
-        }
-        if (amount < 0) {
-            throw new IllegalArgumentException("Amount cannot be negative");
-        }
-        if (date == null) {
-            throw new IllegalArgumentException("Date cannot be null");
-        }
+    public void setType(String type) {
+        this.type = type;
     }
 
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -66,14 +52,13 @@ public class Transactions {
         Transactions that = (Transactions) o;
         return Double.compare(that.amount, amount) == 0 &&
                 Objects.equals(id, that.id) &&
-                Objects.equals(accountId, that.accountId) &&
                 Objects.equals(type, that.type) &&
                 Objects.equals(date, that.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, accountId, type, amount, date);
+        return Objects.hash(id, type, amount, date);
     }
 
 
@@ -81,7 +66,6 @@ public class Transactions {
     public String toString() {
         return "Transactions{" +
                 "id='" + id + '\'' +
-                ", accountID='" + accountId + '\'' +
                 ", type='" + type + '\'' +
                 ", amount=" + amount +
                 ", date=" + date +
