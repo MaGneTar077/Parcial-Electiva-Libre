@@ -1,15 +1,17 @@
 package com.microservice.microservices.application.service;
 
 import com.microservice.microservices.domain.entity.Account;
-import com.microservice.microservices.application.interfaces.AccountRepository;
+import com.microservice.microservices.application.interfaces.AccountServiceRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.UUID;
 
+@Service
 public class AccountService {
-    private final AccountRepository accountRepository;
+    private final AccountServiceRepository accountRepository;
 
-    public AccountService(AccountRepository accountRepository) {
+    public AccountService(AccountServiceRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
 
@@ -64,6 +66,7 @@ public class AccountService {
         return false;
     }
 
+    public void delete(UUID id) {
+        accountRepository.delete(id);
+    }
 }
-
-
