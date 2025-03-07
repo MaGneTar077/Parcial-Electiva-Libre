@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/accounts")
+@RequestMapping("/account")
 public class AccountController {
 
     private final AccountService accountService;
@@ -32,4 +32,24 @@ public class AccountController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @PostMapping("/recharge")
+    public ResponseEntity<Void> recharge(@RequestParam UUID accountId, @RequestParam double amount) {
+        boolean success = accountService.deposit(accountId, amount);
+        return success ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/purchase")
+    public ResponseEntity<Void> purchase(@RequestParam UUID accountId, @RequestParam double amount) {
+        boolean success = accountService.withdraw(accountId, amount);
+        return success ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/send")
+    public ResponseEntity<Void> sendMoney(
+            @RequestParam UUID fromAccountId,
+            @RequestParam UUID toAccountId,
+            @RequestParam double amount) {
+        boolean success = accountService.transfer(fromAccountId, toAccountId, amount);
+        return success ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    }
 }

@@ -1,5 +1,7 @@
 package com.microservice.microservices.domain.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Account {
@@ -10,7 +12,7 @@ public class Account {
     private String dueDate;
     private UUID userId;
     private double balance;
-    //Falta crear la lista de tr5ansacciones de la cuenta y agregarle el getter y agregarla en el constructor tambien
+    private List<Transaction> transactions; // Lista de transacciones
 
     public Account(UUID id, String bankAccountNumber, String accountHolder, String cvcEncrypted, String dueDate, UUID userId, double balance) {
         this.id = id;
@@ -20,6 +22,7 @@ public class Account {
         this.dueDate = dueDate;
         this.userId = userId;
         this.balance = balance;
+        this.transactions = new ArrayList<>();
     }
 
     public UUID getId() { return id; }
@@ -29,5 +32,14 @@ public class Account {
     public String getDueDate() { return dueDate; }
     public UUID getUserId() { return userId; }
     public double getBalance() { return balance; }
+    public List<Transaction> getTransactions() { return transactions; }
 
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public void addTransaction(Transaction transaction) {
+        this.transactions.add(transaction);
+    }
 }

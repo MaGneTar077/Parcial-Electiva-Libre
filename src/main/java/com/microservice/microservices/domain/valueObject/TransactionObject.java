@@ -1,13 +1,13 @@
 package com.microservice.microservices.domain.valueObject;
 
-import com.microservice.microservices.domain.entity.Transactions;
+import com.microservice.microservices.domain.entity.Transaction;
 import java.util.Objects;
 import java.util.Date;
 
-public class TransactionObject extends Transactions {
+public class TransactionObject extends Transaction {
 
-    public TransactionObject(String id, String type, double amount, Date date) {
-        super(id, type, amount, date);
+    public TransactionObject(String id, TransactionType type, double amount, Date date) {
+        super(id, type, amount, date); // Usar TransactionType en lugar de String
     }
 
     @Override
@@ -18,7 +18,7 @@ public class TransactionObject extends Transactions {
         TransactionObject that = (TransactionObject) o;
         return Double.compare(that.getAmount(), this.getAmount()) == 0 &&
                 Objects.equals(that.getId(), this.getId()) &&
-                Objects.equals(that.getType(), this.getType()) &&
+                that.getType() == this.getType() && // Comparar enums directamente
                 Objects.equals(that.getDate(), this.getDate());
     }
 
@@ -31,7 +31,7 @@ public class TransactionObject extends Transactions {
     public String toString() {
         return "TransactionObject{" +
                 "id='" + this.getId() + '\'' +
-                ", type='" + this.getType() + '\'' +
+                ", type=" + this.getType() + // Usar el enum directamente
                 ", amount=" + this.getAmount() +
                 ", date=" + this.getDate() +
                 '}';

@@ -8,7 +8,7 @@ import java.util.UUID;
 public class AccountEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(name = "bank_account_number", nullable = false, unique = true)

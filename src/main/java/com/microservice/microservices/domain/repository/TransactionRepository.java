@@ -1,10 +1,9 @@
 package com.microservice.microservices.domain.repository;
 
-import com.microservice.microservices.domain.entity.Transactions;
+import com.microservice.microservices.domain.entity.Transaction;
 import java.util.List;
 
-
 public interface TransactionRepository {
-    Transactions save(Transactions transaction);
-    List<Transactions> findAll();
+    Transaction save(Transaction transaction);
+    List<Transaction> findAll();
 }
