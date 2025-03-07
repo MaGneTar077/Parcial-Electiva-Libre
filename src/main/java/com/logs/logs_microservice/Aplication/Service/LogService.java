@@ -1,14 +1,15 @@
-package com.logs.logs_microservice.Aplication.Services;
+package com.logs.logs_microservice.Aplication.Service;
 
-import com.logs.logs_microservice.Domain.LogType;
+import com.logs.logs_microservice.Domain.Ports.LogType;
 import com.logs.logs_microservice.Domain.Ports.LogRepositoryPort;
-import com.logs.logs_microservice.Domain.Entity.Logs;
-import lombok.extern.java.Log;
+import com.logs.logs_microservice.Domain.Entity.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class LogService {
     private LogRepositoryPort logRepositoryPort;
 
@@ -17,15 +18,19 @@ public class LogService {
         this.logRepositoryPort = logRepositoryPort;
     }
 
-    public List<Logs>getAllLogs(){
-      return logRepositoryPort.findAllLogs();
+    public Log save(Log log){
+        return logRepositoryPort.save(log);
     }
 
-    public Optional<Logs>getLogById(Long Id){
+    public List<Log>getAllLogs(){
+      return logRepositoryPort.findAll();
+    }
+
+    public Optional<Log>getLogById(Long Id){
         return logRepositoryPort.findById(Id);
     }
 
-    public List<Logs>getLogByType(String Type){
+    public List<Log>getLogByType(String Type){
         return logRepositoryPort.findByType(LogType.valueOf(Type));
     }
 }

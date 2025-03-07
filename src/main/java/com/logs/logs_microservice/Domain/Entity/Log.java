@@ -1,7 +1,7 @@
 package com.logs.logs_microservice.Domain.Entity;
 
-import com.logs.logs_microservice.Domain.LogStatus;
-import com.logs.logs_microservice.Domain.LogType;
+import com.logs.logs_microservice.Domain.Ports.LogStatus;
+import com.logs.logs_microservice.Domain.Ports.LogType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,21 +11,20 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
-public class Logs {
-
+public class Log {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
     private String NameMicroSv;
     private String URL;
     private LogStatus Status;
-
     private String MSJ;
-
     private LogType Type;
     private String Payload;
     private Date Time;
 
-    public Logs(Long Id, String NameMicroSv, String URL, LogStatus Status, String MSJ, LogType Type, String Payload, Date Time){
+    public Log(Long Id, String NameMicroSv, String URL, LogStatus Status, String MSJ, LogType Type, String Payload, Date Time){
         this.Id = Id;
         this.NameMicroSv = NameMicroSv;
         this.URL = URL;
