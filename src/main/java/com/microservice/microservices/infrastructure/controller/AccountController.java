@@ -32,21 +32,4 @@ public class AccountController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/{id}/deposit")
-    public ResponseEntity<Void> deposit(@PathVariable UUID id, @RequestParam double amount) {
-        boolean success = accountService.deposit(id, amount);
-        return success ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
-    }
-
-    @PostMapping("/{id}/withdraw")
-    public ResponseEntity<Void> withdraw(@PathVariable UUID id, @RequestParam double amount) {
-        boolean success = accountService.withdraw(id, amount);
-        return success ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAccount(@PathVariable UUID id) {
-        accountService.delete(id);
-        return ResponseEntity.noContent().build();
-    }
 }

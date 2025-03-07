@@ -29,6 +29,8 @@ public class AccountEntity {
     @Column(name = "balance", nullable = false)
     private double balance;
 
+    public AccountEntity() {
+    }
 
     private AccountEntity(Builder builder) {
         this.id = builder.id;
