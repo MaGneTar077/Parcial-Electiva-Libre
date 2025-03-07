@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 public class LogService {
-    private LogRepositoryPort logRepositoryPort;
+    private final LogRepositoryPort logRepositoryPort;
 
     @Autowired
     public LogService(LogRepositoryPort logRepositoryPort) {
@@ -23,7 +23,7 @@ public class LogService {
     }
 
     public List<Log>getAllLogs(){
-      return logRepositoryPort.findAll();
+        return logRepositoryPort.findAll();
     }
 
     public Optional<Log>getLogById(Long Id){
