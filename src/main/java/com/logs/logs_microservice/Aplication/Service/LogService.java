@@ -19,6 +19,9 @@ public class LogService {
     }
 
     public Log save(Log log){
+        if(log.getStatus()<100 || log.getStatus()>=600){
+            throw new IllegalArgumentException("Error");
+        }
         return logRepositoryPort.save(log);
     }
 

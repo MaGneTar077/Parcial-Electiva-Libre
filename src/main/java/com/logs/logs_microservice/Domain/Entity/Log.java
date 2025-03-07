@@ -1,6 +1,5 @@
 package com.logs.logs_microservice.Domain.Entity;
 
-import com.logs.logs_microservice.Domain.Ports.LogStatus;
 import com.logs.logs_microservice.Domain.Ports.LogType;
 import jakarta.persistence.*;
 import lombok.Getter;
