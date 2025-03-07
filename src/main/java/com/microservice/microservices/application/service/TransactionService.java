@@ -2,29 +2,36 @@ package com.microservice.microservices.application.service;
 
 import com.microservice.microservices.domain.entity.Transactions;
 import com.microservice.microservices.domain.repository.TransactionRepository;
-import com.microservice.microservices.application.service.NotificationSevice;
+import com.microservice.microservices.domain.valueObject.TransactionType;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TransactionService {
 
     private final TransactionRepository transactionRepository;
-    private final NotificationSevice notificationSevice;
+
 
     public TransactionService(TransactionRepository transactionRepository, NotificationSevice notificationSevice){
         this.transactionRepository = transactionRepository;
-        this.notificationSevice = notificationSevice;
     }
 
-    public Transactions createTransaction(Transactions transactions){
+    public Transactions processTransaction(Transactions transaction) {
 
-        Transactions savedTransaction = transactionRepository.save(transactions);
+        if (TransactionType.income.name().equals(transaction.getType())) {
+            System.out.println("Procesando transacción de ingreso...");
+        } else if (TransactionType.outcome.name().equals(transaction.getType())) {
+            System.out.println("Procesando transacción de egreso...");
+        }
 
-        notificationSevice.notify(savedTransaction);
-        return savedTransaction;
+        return transactionRepository.save(transaction);
     }
-
     public List<Transactions> getAllTransactions() {
         return transactionRepository.findAll();
+    }
+
+    public Transactions saveTransaction(Transactions transaction){
+        return transactionRepository.save(transaction);
     }
 }
