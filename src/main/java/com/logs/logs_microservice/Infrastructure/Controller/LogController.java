@@ -37,5 +37,5 @@ public class LogController {
         return logService.getLogByType(Type);
     }
 
-    
+
 }
