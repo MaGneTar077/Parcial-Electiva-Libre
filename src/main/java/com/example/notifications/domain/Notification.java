@@ -9,10 +9,6 @@ public class Notification {
     private String id;
     private String templateId;
     private String recipientEncrypted;
-    private String variables; // JSON
+    private String variables;
     private NotificationStatus status;
-}
-
-enum NotificationStatus {
-    PENDING, SENT, FAILED
 }
