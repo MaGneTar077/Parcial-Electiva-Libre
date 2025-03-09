@@ -36,4 +36,6 @@ public class LogController {
     public List<Log> GetLogsByType(@PathVariable String Type){
         return logService.getLogByType(Type);
     }
+
+    
 }
