@@ -6,6 +6,7 @@ import com.logs.logs_microservice.Domain.Ports.LogType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,9 @@ public class LogService {
     }
 
     public Log save(Log log){
+        if(log.getTime() == null){
+            log.setTime(new Date());
+        }
         log.setStatus(StatusMachine(log));
         return logRepositoryPort.save(log);
     }

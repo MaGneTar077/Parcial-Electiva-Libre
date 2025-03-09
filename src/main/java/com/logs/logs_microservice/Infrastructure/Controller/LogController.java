@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Logs")
+@RequestMapping("/Logs/")
 public class LogController {
     private final LogService logService;
 
