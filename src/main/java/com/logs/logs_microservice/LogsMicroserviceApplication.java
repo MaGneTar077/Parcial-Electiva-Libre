@@ -2,12 +2,12 @@ package com.logs.logs_microservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.logs.logs_microservice"})
 public class LogsMicroserviceApplication {
+
 	public static void main(String[] args) {
 		SpringApplication.run(LogsMicroserviceApplication.class, args);
 	}
+
 }

@@ -8,6 +8,6 @@ import java.util.Optional;
 public interface LogRepositoryPort{
     Log save(Log log);
     List<Log> findAll();
-    Optional<Log> findById(Long Id);
-    List<Log> findByType(LogType Type);
+    Optional<Log> findById(String Id);
+    List<Log> findByType(String Type);
 }

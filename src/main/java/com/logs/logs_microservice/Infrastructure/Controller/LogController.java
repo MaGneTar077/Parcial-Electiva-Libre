@@ -11,11 +11,11 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/Logs")
 public class LogController {
-    private LogService logService;
+    private final LogService logService;
 
     @Autowired
     public LogController(LogService logService){
-    this.logService = logService;
+        this.logService = logService;
     }
 
     @PostMapping
@@ -28,7 +28,7 @@ public class LogController {
     }
 
     @GetMapping("/{Id}")
-    public Optional<Log> GetLogById(@PathVariable Long Id){
+    public Optional<Log> GetLogById(@PathVariable String Id){
         return logService.getLogById(Id);
     }
 
