@@ -48,4 +48,12 @@ public class LogController {
         logService.save(log);
         return logService.getLogByType(Type);
     }
+    @GetMapping("/filter")
+    public List<Log> getLogByType(@RequestParam String Type){
+        if(Type != null){
+            return logService.getLogByType(Type);
+        }else{
+            return logService.getLogByType(Type);
+        }
+    }
 }
