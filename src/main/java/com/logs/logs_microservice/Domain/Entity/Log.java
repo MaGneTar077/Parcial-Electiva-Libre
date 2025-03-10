@@ -35,6 +35,11 @@ public class Log {
 
     }
 
+    public Log() {
+        this.Type = LogType.GET;
+
+    }
+
     public String getId() {
         return Id;
     }
